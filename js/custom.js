@@ -101,50 +101,50 @@ $(function () {
 	
 	
 	// Tabs
-	$(".tab_content").hide();
-	$("ul.tabs li:first-child").addClass("active").show();
-	$(".block").find(".tab_content:first").show();
-
-	$("ul.tabs li").click(function() {
-		$(this).parent().find('li').removeClass("active");
-		$(this).addClass("active");
-		$(this).parents('.block').find(".tab_content").hide();
-			
-		var activeTab = $(this).find("a").attr("href");
-		$(activeTab).show();
-		
-		// refresh visualize for IE
-		$(activeTab).find('.visualize').trigger('visualizeRefresh');
-		
-		return false;
-	});
+	//$(".tab_content").hide();
+	//$("ul.tabs li:first-child").addClass("active").show();
+	//$(".block").find(".tab_content:first").show();
+//
+	//$("ul.tabs li").click(function() {
+	//	$(this).parent().find('li').removeClass("active");
+	//	$(this).addClass("active");
+	//	$(this).parents('.block').find(".tab_content").hide();
+	//
+	//	var activeTab = $(this).find("a").attr("href");
+	//	$(activeTab).show();
+	//
+	//	// refresh visualize for IE
+	//	$(activeTab).find('.visualize').trigger('visualizeRefresh');
+	//
+	//	return false;
+	//});
 	
 	
 	
 	// Sidebar Tabs
-	$(".sidebar_content").hide();
-	
-	if(window.location.hash && window.location.hash.match('sb')) {
-	
-		$("ul.sidemenu li a[href="+window.location.hash+"]").parent().addClass("active").show();
-		$(".block .sidebar_content#"+window.location.hash).show();
-	} else {
-	
-		$("ul.sidemenu li:first-child").addClass("active").show();
-		$(".block .sidebar_content:first").show();
-	}
-
-	$("ul.sidemenu li").click(function() {
-	
-		var activeTab = $(this).find("a").attr("href");
-		window.location.hash = activeTab;
-	
-		$(this).parent().find('li').removeClass("active");
-		$(this).addClass("active");
-		$(this).parents('.block').find(".sidebar_content").hide();			
-		$(activeTab).show();
-		return false;
-	});	
+	//$(".sidebar_content").hide();
+	//
+	//if(window.location.hash && window.location.hash.match('sb')) {
+	//
+	//	$("ul.sidemenu li a[href="+window.location.hash+"]").parent().addClass("active").show();
+	//	$(".block .sidebar_content#"+window.location.hash).show();
+	//} else {
+	//
+	//	$("ul.sidemenu li:first-child").addClass("active").show();
+	//	$(".block .sidebar_content:first").show();
+	//}
+//
+	//$("ul.sidemenu li").click(function() {
+	//
+	//	var activeTab = $(this).find("a").attr("href");
+	//	window.location.hash = activeTab;
+	//
+	//	$(this).parent().find('li').removeClass("active");
+	//	$(this).addClass("active");
+	//	$(this).parents('.block').find(".sidebar_content").hide();
+	//	$(activeTab).show();
+	//	return false;
+	//});
 	
 	
 	

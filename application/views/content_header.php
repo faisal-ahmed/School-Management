@@ -7,26 +7,26 @@
         <h2><?php echo $active_menu ?></h2>
 
         <?php if ($active_menu == 'class') { ?>
-        <ul>
-            <li><a href="#">Add Class</a></li>
-            <li><a href="#">Class List</a></li>
-        </ul>
+            <ul>
+                <li class="<?php if ($tab_menu == 'addClass') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/classManagement/addClass">Add Class</a></li>
+                <li class="<?php if ($tab_menu == 'classList') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/classManagement/classList">Class List</a></li>
+            </ul>
         <?php } else if ($active_menu == 'student') { ?>
             <ul>
-                <li><a href="#">Add Student</a></li>
-                <li><a href="#">Student List</a></li>
+                <li class="<?php if ($tab_menu == 'addStudent') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/studentManagement/addStudent">Add Student</a></li>
+                <li class="<?php if ($tab_menu == 'studentList') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/studentManagement/studentList">Student List</a></li>
             </ul>
         <?php } else if ($active_menu == 'result') { ?>
-        <ul>
-            <li><a href="#">Add Result</a></li>
-            <li><a href="#">Current Results</a></li>
-            <li><a href="#">Publish Result (SMS)</a></li>
-        </ul>
+            <ul>
+                <li class="<?php if ($tab_menu == 'addResult') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/resultManagement/addResult">Add Result</a></li>
+                <li class="<?php if ($tab_menu == 'searchResult') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/resultManagement/searchResult">Search Results</a></li>
+                <li class="<?php if ($tab_menu == 'publishResult') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/resultManagement/publishResult">Publish Result (Via SMS)</a></li>
+            </ul>
         <?php } else if ($active_menu == 'notification') { ?>
-        <ul>
-            <li><a href="#">Notify Class</a></li>
-            <li><a href="#">Notify Student</a></li>
-        </ul>
+            <ul>
+                <li class="<?php if ($tab_menu == 'notifyClass') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/notificationManagement/notifyClass">Notify Class</a></li>
+                <li class="<?php if ($tab_menu == 'notifyStudent') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/notificationManagement/notifyStudent">Notify Student</a></li>
+            </ul>
         <?php } ?>
 
     </div>

@@ -55,8 +55,14 @@ class controller_helper extends CI_Controller{
     function checkLogin(){
         $login = $this->getSessionAttr('login');
         if ($login !== true) {
-            $this->addViewData('warning', 'You are not logged in. Please login to continue');
             redirect('user', 'refresh');
+        }
+    }
+
+    function alreadyLoggedIn(){
+        $login = $this->getSessionAttr('login');
+        if ($login === true) {
+            redirect('dashboard', 'refresh');
         }
     }
 

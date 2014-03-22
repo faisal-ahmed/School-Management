@@ -24,8 +24,8 @@
         </p>
 
         <p>
-            <input type="submit" class="submit" value="Login"/> &nbsp;
-            <!--<input type="checkbox" class="checkbox" checked="checked" id="rememberme"/> <label for="rememberme">Remember
+            <input type="submit" class="submit" value="Login"/><!-- &nbsp;
+            <input type="checkbox" class="checkbox" checked="checked" id="rememberme"/> <label for="rememberme">Remember
                 me</label>-->
         </p>
         </form>
