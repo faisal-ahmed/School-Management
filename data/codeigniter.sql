@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v8.71 
-MySQL - 5.5.8-log : Database - codeigniter
+MySQL - 5.5.24-log : Database - codeigniter
 *********************************************************************
 */
 
@@ -16,20 +16,20 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`codeigniter` /*!40100 DEFAULT CHARACTER
 
 USE `codeigniter`;
 
-/*Table structure for table `codeigniter_user` */
+/*Table structure for table `users` */
 
-DROP TABLE IF EXISTS `codeigniter_user`;
+DROP TABLE IF EXISTS `users`;
 
-CREATE TABLE `codeigniter_user` (
-  `codeigniter_user_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `codeigniter_username` varchar(255) DEFAULT NULL,
-  `codeigniter_password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`codeigniter_user_id`)
+CREATE TABLE `users` (
+  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-/*Data for the table `codeigniter_user` */
+/*Data for the table `users` */
 
-insert  into `codeigniter_user`(`codeigniter_user_id`,`codeigniter_username`,`codeigniter_password`) values (1,'Admin','e10adc3949ba59abbe56e057f20f883e');
+insert  into `users`(`user_id`,`username`,`password`) values (1,'Admin','202cb962ac59075b964b07152d234b70');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
