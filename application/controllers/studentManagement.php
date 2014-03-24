@@ -24,6 +24,7 @@ class studentManagement extends controller_helper{
 
     function addStudent(){
         $this->addViewData('tab_menu', 'addStudent');
+        $this->addViewData('info', array('Be careful when adding parents mobile number!!!'));
         $this->addViewData('class', array('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'SSC', 'Eleven', 'Twelve', 'HSC'));
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $this->form_validation->set_rules('section', 'Section', 'required|xss_clean');
