@@ -26,9 +26,9 @@ class studentManagement extends controller_helper{
         $this->addViewData('tab_menu', 'addStudent');
         $this->addViewData('class', array('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'SSC', 'Eleven', 'Twelve', 'HSC'));
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
-            $this->form_validation->set_rules('section', 'Section', 'required');
-            $this->form_validation->set_rules('student_name', 'Student Name', 'required');
-            $this->form_validation->set_rules('student_roll', 'Roll Number', 'required|numeric');
+            $this->form_validation->set_rules('section', 'Section', 'required|xss_clean');
+            $this->form_validation->set_rules('student_name', 'Student Name', 'required|xss_clean');
+            $this->form_validation->set_rules('student_roll', 'Roll Number', 'required|numeric|xss_clean');
             $this->form_validation->set_rules('parents_mobile', 'Parents Mobile Number', 'required|regex_match[/^[0-9().-]+$/]|xss_clean');
             if ($this->form_validation->run() == FALSE) {
                 $this->addViewData('error', $this->getErrors(validation_errors()));

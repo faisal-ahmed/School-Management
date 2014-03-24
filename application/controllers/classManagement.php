@@ -26,7 +26,7 @@ class classmanagement extends controller_helper{
         $this->addViewData('tab_menu', 'addClass');
         $this->addViewData('class', array('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'SSC', 'Eleven', 'Twelve', 'HSC'));
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
-            $this->form_validation->set_rules('section', 'Section', 'required');
+            $this->form_validation->set_rules('section', 'Section', 'required|xss_clean');
             if ($this->form_validation->run() == FALSE) {
                 $this->addViewData('error', array('Section is required to create a class'));
             } else if ($this->class_persistance->createClass()) {
