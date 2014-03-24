@@ -15,6 +15,7 @@ class classmanagement extends controller_helper{
         $this->checkLogin();
         $this->addViewData('username', $this->getSessionAttr('username'));
         $this->addViewData('active_menu', 'class');
+        $this->load->model('class_persistance');
     }
 
     function index(){
@@ -23,6 +24,17 @@ class classmanagement extends controller_helper{
 
     function addClass(){
         $this->addViewData('tab_menu', 'addClass');
+        $this->addViewData('class', array('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'SSC', 'Eleven', 'Twelve', 'HSC'));
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $this->form_validation->set_rules('section', 'Section', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $this->addViewData('error', array('Section is required to create a class'));
+            } else if ($this->class_persistance->createClass()) {
+                $this->addViewData('success', array('A class has been created successfully.'));
+            } else {
+                $this->addViewData('error', array('A class already exist with that name and section!'));
+            }
+        }
         $this->loadview('add_class');
     }
 

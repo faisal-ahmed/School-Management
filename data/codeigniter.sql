@@ -16,6 +16,85 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`codeigniter` /*!40100 DEFAULT CHARACTER
 
 USE `codeigniter`;
 
+/*Table structure for table `class` */
+
+DROP TABLE IF EXISTS `class`;
+
+CREATE TABLE `class` (
+  `class_id` int(11) NOT NULL AUTO_INCREMENT,
+  `class` varchar(255) DEFAULT NULL,
+  `section` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`class_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `class` */
+
+insert  into `class`(`class_id`,`class`,`section`) values (1,'Nine','A'),(2,'One','A');
+
+/*Table structure for table `notification` */
+
+DROP TABLE IF EXISTS `notification`;
+
+CREATE TABLE `notification` (
+  `notification_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `message` text,
+  `receiver` bigint(20) DEFAULT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`notification_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `notification` */
+
+/*Table structure for table `payment` */
+
+DROP TABLE IF EXISTS `payment`;
+
+CREATE TABLE `payment` (
+  `payment_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `student_id` bigint(20) NOT NULL,
+  `month` varchar(255) DEFAULT NULL,
+  `fee` int(11) NOT NULL,
+  `paid` int(11) DEFAULT '0',
+  `discount` int(11) DEFAULT '0',
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `payment` */
+
+/*Table structure for table `result` */
+
+DROP TABLE IF EXISTS `result`;
+
+CREATE TABLE `result` (
+  `student_id` int(11) NOT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `total_marks` double DEFAULT '0',
+  `exam` varchar(255) DEFAULT NULL,
+  `objective` double DEFAULT '0',
+  `subjective` double DEFAULT '0',
+  `practical` double DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `result` */
+
+/*Table structure for table `student` */
+
+DROP TABLE IF EXISTS `student`;
+
+CREATE TABLE `student` (
+  `student_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `student_name` varchar(255) DEFAULT NULL,
+  `student_roll` int(11) DEFAULT NULL,
+  `class_id` bigint(20) DEFAULT NULL,
+  `students_mobile` varchar(255) DEFAULT NULL,
+  `parents_mobile` varchar(255) NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `student` */
+
+insert  into `student`(`student_id`,`student_name`,`student_roll`,`class_id`,`students_mobile`,`parents_mobile`) values (1,'Mohammad',1,1,'01940526064',''),(2,'Faisal',2,1,'01940526064','01912453679');
+
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;

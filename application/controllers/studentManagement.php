@@ -15,6 +15,7 @@ class studentManagement extends controller_helper{
         $this->checkLogin();
         $this->addViewData('username', $this->getSessionAttr('username'));
         $this->addViewData('active_menu', 'student');
+        $this->load->model('student_persistance');
     }
 
     function index(){
@@ -23,6 +24,22 @@ class studentManagement extends controller_helper{
 
     function addStudent(){
         $this->addViewData('tab_menu', 'addStudent');
+        $this->addViewData('class', array('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'SSC', 'Eleven', 'Twelve', 'HSC'));
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $this->form_validation->set_rules('section', 'Section', 'required');
+            $this->form_validation->set_rules('student_name', 'Student Name', 'required');
+            $this->form_validation->set_rules('student_roll', 'Roll Number', 'required|numeric');
+            $this->form_validation->set_rules('parents_mobile', 'Parents Mobile Number', 'required|regex_match[/^[0-9().-]+$/]|xss_clean');
+            if ($this->form_validation->run() == FALSE) {
+                $this->addViewData('error', $this->getErrors(validation_errors()));
+            } else if (($result = $this->student_persistance->createStudent()) === true) {
+                $this->addViewData('success', array('Congrats! A student has been added successfully.'));
+                redirect('studentManagement/addStudent', 'refresh');
+                exit();
+            } else {
+                $this->addViewData('error', array($result));
+            }
+        }
         $this->loadview('add_student');
     }
 

@@ -72,4 +72,17 @@ class controller_helper extends CI_Controller{
         }
         return false;
     }
+
+    function getErrors($errorString){
+        $return = array();
+        $errors = explode('</p>', $errorString);
+        foreach ($errors as $key => $value) {
+            $error = substr($value, strpos($value, '<p>') + 3);
+            if ($error == '') {
+                continue;
+            }
+            $return[] = $error;
+        }
+        return $return;
+    }
 }

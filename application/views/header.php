@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PTH Coaching Center</title>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/my_style.css" type="text/css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css" type="text/css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/jquery.wysiwyg.css" type="text/css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/facebox.css" type="text/css"/>

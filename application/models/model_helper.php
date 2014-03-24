@@ -18,4 +18,9 @@ class model_helper  extends CI_Model{
         print_r($debugArray);
         echo "</pre>";
     }
+
+    function getPost($attr) {
+        $return = trim($this->input->get_post($attr, true));
+        return $return;
+    }
 }
