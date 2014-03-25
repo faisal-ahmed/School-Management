@@ -1,5 +1,6 @@
 .sidebar_content p{
     clear: none !important;
+    text-align: justify;
 }
 
 .dashboard_image{
