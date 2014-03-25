@@ -477,7 +477,7 @@ a:hover {
 .block .pagination.right {
 	float: right;
 	text-align: right;
-	padding-top: 1px;
+	/*padding-top: 1px;*/
 	border: 0;
 	width: 500px;
 	overflow: hidden;

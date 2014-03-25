@@ -85,4 +85,24 @@ class controller_helper extends CI_Controller{
         }
         return $return;
     }
+
+    function loadPagination($controllerFunction, $totalRows = 200, $perPage = 50) {
+        $this->load->library('pagination');
+
+        $config['base_url'] = base_url() . "index.php/$controllerFunction/";
+        $config['total_rows'] = $totalRows;
+        $config['per_page'] = $perPage;
+        $config['num_links'] = 5;
+        $config['full_tag_open'] = '<div class="pagination right">';
+        $config['full_tag_close'] = '</div>';
+        $config['next_link'] = '&raquo;';
+        $config['prev_link'] = '&laquo;';
+        $config['cur_tag_open'] = '<a href="#" class="active">';
+        $config['cur_tag_close'] = '</a>';
+        $config['first_link'] = 'First';
+        $config['last_link'] = 'Last';
+
+        $this->pagination->initialize($config);
+        return $this->pagination->create_links();
+    }
 }

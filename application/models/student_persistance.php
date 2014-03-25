@@ -50,12 +50,13 @@ class Student_persistance  extends model_helper
         return true;
     }
 
-    function studentList(){
+    function studentList($limit = 1, $start = 0){
         $return = array();
 
         $this->db->select('*');
         $this->db->from('student');
         $this->db->join('class', 'student.class_id = class.class_id', 'left');
+        $this->db->limit($limit, $start);
 
         $classes = $this->db->get();
 
@@ -64,6 +65,10 @@ class Student_persistance  extends model_helper
         }
 
         return $return;
+    }
+
+    function totalStudentCount(){
+        return $this->db->count_all('class');
     }
 }
 

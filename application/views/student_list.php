@@ -29,4 +29,5 @@
         </tbody>
 
     </table>
+    <?php echo $pagination; ?>
 </div>        <!-- .sidebar_content ends -->
