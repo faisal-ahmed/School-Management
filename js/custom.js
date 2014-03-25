@@ -171,10 +171,11 @@ $(function () {
 	});
 	
 	
-	
+
+    var base_url = $('#base_url').val();
 	// Style file input
 	$("input[type=file]").filestyle({ 
-	    image: "images/upload.gif",
+	    image: base_url + "images/upload.gif",
 	    imageheight : 30,
 	    imagewidth : 80,
 	    width : 250
@@ -185,21 +186,35 @@ $(function () {
 	// File upload
 	if ($('#fileupload').length) {
 		new AjaxUpload('fileupload', {
-			action: 'upload-handler.php',
+			action: base_url + 'upload-handler.php',
 			autoSubmit: true,
 			name: 'userfile',
 			responseType: 'text/html',
 			onSubmit : function(file , ext) {
-					$('.fileupload #uploadmsg').addClass('loading').text('Uploading...');
-					this.disable();	
-				},
-			onComplete : function(file, response) {
-					$('.fileupload #uploadmsg').removeClass('loading').text(response);
-					this.enable();
-				}	
-		});
-	}
-		
+                if (validateFileExt(ext) == false) {
+                    $('.fileupload #uploadmsg').text("File type doesn't match. Please select correct file type first.");
+                    return false;
+                }
+                $('.submit').addClass('submitActionLoading');
+                $('.submit').attr('disabled', 'true');
+                $('.fileupload #uploadmsg').addClass('loading').text('Uploading...');
+                this.disable();
+            },
+            onComplete : function(file, response) {
+                $('.submit').removeClass('submitActionLoading');
+                $('.submit').removeAttr('disabled');
+                $('#uploaded_file_name').attr('value',file);
+                $('.fileupload #uploadmsg').removeClass('loading').text(response);
+                $('.fileupload .file').removeClass('redBorder');
+                this.enable();
+            }
+        });
+    }
+
+    function validateFileExt(ext) {
+        if (ext == 'csv') return true;
+        else return false;
+    }
 		
 	
 	// Date picker

@@ -52,4 +52,11 @@ class studentManagement extends controller_helper{
         $this->addViewData('pagination', $this->loadPagination('studentManagement/studentList', $this->student_persistance->totalStudentCount(), $perPage));
         $this->loadview('student_list');
     }
+
+    function studentProfile(){
+        $this->addViewData('tab_menu', 'studentList');
+        $student_id = $this->uri->segment(3);
+        $this->addViewData('profile', $this->student_persistance->studentDetail($student_id));
+        $this->loadview('student_profile');
+    }
 }

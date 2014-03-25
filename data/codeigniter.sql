@@ -58,9 +58,11 @@ CREATE TABLE `payment` (
   `paid` int(11) DEFAULT '0',
   `discount` int(11) DEFAULT '0',
   PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `payment` */
+
+insert  into `payment`(`payment_id`,`student_id`,`month`,`fee`,`paid`,`discount`) values (1,1,'January',2000,1500,500),(2,1,'February',2000,1000,0);
 
 /*Table structure for table `result` */
 
@@ -73,10 +75,13 @@ CREATE TABLE `result` (
   `exam` varchar(255) DEFAULT NULL,
   `objective` double DEFAULT '0',
   `subjective` double DEFAULT '0',
-  `practical` double DEFAULT '0'
+  `practical` double DEFAULT '0',
+  `published` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `result` */
+
+insert  into `result`(`student_id`,`subject`,`total_marks`,`exam`,`objective`,`subjective`,`practical`,`published`) values (1,'Bangla',50,'Mid Term',25,25,0,0),(1,'Math',40,'Mid Term',0,40,0,0);
 
 /*Table structure for table `student` */
 

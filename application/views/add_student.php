@@ -39,4 +39,5 @@
         <input type="submit" class="submit long" value="Add Student"/>
     </p>
     <?php echo form_close() ?>
+    <hr/>
 </div>        <!-- .sidebar_content ends -->

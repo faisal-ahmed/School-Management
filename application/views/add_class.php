@@ -19,4 +19,5 @@
         <input type="submit" class="submit long" value="Create Class"/>
     </p>
     <?php echo form_close() ?>
+    <hr/>
 </div>        <!-- .sidebar_content ends -->

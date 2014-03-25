@@ -70,6 +70,38 @@ class Student_persistance  extends model_helper
     function totalStudentCount(){
         return $this->db->count_all('class');
     }
+
+    function studentDetail($student_id){
+        $return = array(
+            'student_info' => array(),
+            'payment_info' => array(),
+            'result_info' => array(),
+        );
+
+        $this->db->select('*');
+        $this->db->from('student');
+        $this->db->join('class', 'student.class_id = class.class_id', 'left');
+        $this->db->where('student.student_id', $student_id);
+
+        $classes = $this->db->get();
+        $return['student_info'] = (array)$classes->result();
+
+        $this->db->select('*');
+        $this->db->from('payment');
+        $this->db->where('payment.student_id', $student_id);
+
+        $classes = $this->db->get();
+        $return['payment_info'] = (array)$classes->result();
+
+        $this->db->select('*');
+        $this->db->from('result');
+        $this->db->where('result.student_id', $student_id);
+
+        $classes = $this->db->get();
+        $return['result_info'] = (array)$classes->result();
+
+        return $return;
+    }
 }
 
 ?>
