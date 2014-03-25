@@ -25,6 +25,7 @@ class Student_persistance  extends model_helper
             'student_name' => $this->getPost('student_name'),
             'students_mobile' => $this->getPost('students_mobile'),
             'parents_mobile' => $this->getPost('parents_mobile'),
+            'student_created' => time(),
             'class_id' => '',
         );
         $this->db->where('student_roll', $data['student_roll']);
@@ -47,6 +48,22 @@ class Student_persistance  extends model_helper
         $this->db->insert('student', $data);
 
         return true;
+    }
+
+    function studentList(){
+        $return = array();
+
+        $this->db->select('*');
+        $this->db->from('student');
+        $this->db->join('class', 'student.class_id = class.class_id', 'left');
+
+        $classes = $this->db->get();
+
+        foreach ($classes->result() as $key => $value) {
+            $return[] = (array)$value;
+        }
+
+        return $return;
     }
 }
 

@@ -40,6 +40,7 @@ class classmanagement extends controller_helper{
 
     function classList(){
         $this->addViewData('tab_menu', 'classList');
+        $this->addViewData('classes', $this->class_persistance->classList());
         $this->loadview('class_list');
     }
 }

@@ -46,6 +46,7 @@ class studentManagement extends controller_helper{
 
     function studentList(){
         $this->addViewData('tab_menu', 'studentList');
+        $this->addViewData('students', $this->student_persistance->studentList());
         $this->loadview('student_list');
     }
 }
