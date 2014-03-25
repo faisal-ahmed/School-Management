@@ -24,12 +24,13 @@ CREATE TABLE `class` (
   `class_id` int(11) NOT NULL AUTO_INCREMENT,
   `class` varchar(255) DEFAULT NULL,
   `section` varchar(255) DEFAULT NULL,
+  `created` bigint(20) NOT NULL DEFAULT '1395742228',
   PRIMARY KEY (`class_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `class` */
 
-insert  into `class`(`class_id`,`class`,`section`) values (1,'Nine','A'),(2,'One','A');
+insert  into `class`(`class_id`,`class`,`section`,`created`) values (1,'Nine','A',1395742228),(2,'One','A',1395742228);
 
 /*Table structure for table `notification` */
 
@@ -88,12 +89,13 @@ CREATE TABLE `student` (
   `class_id` bigint(20) DEFAULT NULL,
   `students_mobile` varchar(255) DEFAULT NULL,
   `parents_mobile` varchar(255) NOT NULL,
+  `student_created` bigint(20) NOT NULL DEFAULT '1395742228',
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `student` */
 
-insert  into `student`(`student_id`,`student_name`,`student_roll`,`class_id`,`students_mobile`,`parents_mobile`) values (1,'Mohammad',1,1,'01940526064',''),(2,'Faisal',2,1,'01940526064','01912453679');
+insert  into `student`(`student_id`,`student_name`,`student_roll`,`class_id`,`students_mobile`,`parents_mobile`,`student_created`) values (1,'Mohammad Aminul Haque Bulbul Sarkar',1,1,'01940526064','',1395742238),(2,'Faisal',2,1,'01940526064','01912453679',1395742248);
 
 /*Table structure for table `users` */
 
