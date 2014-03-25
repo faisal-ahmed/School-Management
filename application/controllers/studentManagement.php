@@ -19,7 +19,7 @@ class studentManagement extends controller_helper{
     }
 
     function index(){
-        redirect('studentManagement/addStudent', 'refresh');
+        redirect('studentManagement/studentList', 'refresh');
     }
 
     function addStudent(){

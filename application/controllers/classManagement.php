@@ -19,7 +19,7 @@ class classmanagement extends controller_helper{
     }
 
     function index(){
-        redirect('classManagement/addClass', 'refresh');
+        redirect('classManagement/classList', 'refresh');
     }
 
     function addClass(){
