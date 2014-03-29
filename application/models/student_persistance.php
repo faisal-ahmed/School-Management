@@ -70,7 +70,7 @@ class Student_persistance  extends model_helper
     }
 
     function totalStudentCount(){
-        return $this->db->count_all('class');
+        return $this->db->count_all('student');
     }
 
     function studentDetail($student_id){
