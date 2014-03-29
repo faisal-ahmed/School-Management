@@ -15,7 +15,6 @@ class resultManagement extends controller_helper
     {
         parent::__construct();
         $this->checkLogin();
-        $this->addViewData('username', $this->getSessionAttr('username'));
         $this->addViewData('active_menu', 'result');
         $this->load->model('result_persistance');
     }

@@ -13,7 +13,6 @@ class dashboard extends controller_helper{
     function __construct() {
         parent::__construct();
         $this->checkLogin();
-        $this->addViewData('username', $this->getSessionAttr('username'));
     }
 
     function index(){

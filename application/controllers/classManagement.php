@@ -13,7 +13,6 @@ class classmanagement extends controller_helper{
     function __construct() {
         parent::__construct();
         $this->checkLogin();
-        $this->addViewData('username', $this->getSessionAttr('username'));
         $this->addViewData('active_menu', 'class');
         $this->load->model('class_persistance');
     }

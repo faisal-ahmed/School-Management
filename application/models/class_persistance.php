@@ -23,9 +23,11 @@ class Class_persistance  extends model_helper
             'section' => $this->getPost('section'),
             'created' => time(),
         );
+        $this->db->select('*');
+        $this->db->from('class');
         $this->db->where('class', $data['class']);
         $this->db->where('section', $data['section']);
-        if ($this->db->count_all_results('class')) {
+        if ($this->db->count_all_results() > 0) {
             return false;
         }
 

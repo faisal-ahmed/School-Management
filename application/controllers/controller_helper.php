@@ -16,6 +16,8 @@ class controller_helper extends CI_Controller{
         $this->viewData = array(
             'active_menu' => 'dashboard'
         );
+        $this->addViewData('username', $this->getSessionAttr('username'));
+        $this->addViewData('user_id', $this->getSessionAttr('user_id'));
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
     }

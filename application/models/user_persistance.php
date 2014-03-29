@@ -19,9 +19,32 @@ class User_persistance extends model_helper
         foreach ($res->result() as $user) {
             $this->session->set_userdata('login', true);
             $this->session->set_userdata('username', $user->username);
+            $this->session->set_userdata('user_id', $user->user_id);
             return true;
         }
         return false;
+    }
+
+    function update_profile(){
+        $user_id = $this->getPost('user_id');
+        $current_password = $this->getPost('current_password');
+        $data = array();
+        $data['username'] = $this->getPost('username');
+        $data['password'] = md5($this->getPost('new_password'));
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('user_id', $user_id);
+        $this->db->where('password', md5($current_password));
+        if ($this->db->count_all_results() == 0) {
+            return 'Incorrect current password!';
+        }
+
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users', $data);
+        $this->session->unset_userdata('username');
+        $this->session->set_userdata('username', $data['username']);
+
+        return true;
     }
 }
 

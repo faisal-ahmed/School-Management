@@ -13,7 +13,6 @@ class notificationManagement extends controller_helper{
     function __construct() {
         parent::__construct();
         $this->checkLogin();
-        $this->addViewData('username', $this->getSessionAttr('username'));
         $this->addViewData('active_menu', 'notification');
         $this->load->model('notification_persistance');
     }
