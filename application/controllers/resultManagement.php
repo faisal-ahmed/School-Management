@@ -52,7 +52,7 @@ class resultManagement extends controller_helper
             $this->form_validation->set_rules('section', 'Section', 'required|xss_clean');
             if ($this->form_validation->run() == FALSE) {
                 $this->addViewData('error', array('Section is required to publish the result'));
-            } else if ($result = $this->result_persistance->publishResult()) {
+            } else if (($result = $this->result_persistance->publishResult()) === true) {
                 $this->addViewData('success', array('All the results have been published successfully.'));
             } else {
                 $this->addViewData('error', array($result));

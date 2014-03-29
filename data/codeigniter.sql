@@ -100,7 +100,7 @@ CREATE TABLE `student` (
 
 /*Data for the table `student` */
 
-insert  into `student`(`student_id`,`student_name`,`student_roll`,`class_id`,`students_mobile`,`parents_mobile`,`student_created`) values (1,'Mohammad Aminul Haque Bulbul Sarkar',1,1,'01940526064','1395742238',1395742238),(2,'Faisal',2,1,'01940526064','01912453679',1395742248);
+insert  into `student`(`student_id`,`student_name`,`student_roll`,`class_id`,`students_mobile`,`parents_mobile`,`student_created`) values (1,'Mohammad Aminul Haque Bulbul Sarkar',1,1,'01940526064','01534836999',1395742238),(2,'Faisal',2,1,'01940526064','01912453679',1395742248);
 
 /*Table structure for table `users` */
 

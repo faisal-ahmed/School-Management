@@ -18,19 +18,67 @@ class Result_persistance extends model_helper
 
     function publishResult()
     {
-        $data = array(
-            'class' => $this->getPost('class'),
-            'section' => $this->getPost('section'),
-        );
-        $this->db->where('class', $data['class']);
-        $this->db->where('section', $data['section']);
-        if ($this->db->count_all_results('class') == 0) {
+        $class = $this->getPost('class');
+        $section = $this->getPost('section');
+        $this->db->select('*');
+        $this->db->from('class');
+        $this->db->where('class', $class);
+        $this->db->where('section', $section);
+        if ($this->db->count_all_results() == 0) {
             return 'Class or section doesn\' exist!';
         }
 
         //TODO: Selects all results with that class_id and send sms here
 
+        $data = array(
+            'published' => 1
+        );
+
+        $result = $this->fetchResultsByClass($class, $section);
+
+        foreach ($result as $student_id => $student_attr) {
+            $mobile = $student_attr['mobile'];
+            foreach ($student_attr['term'] as $term_name => $resultDetail) {
+                $term = strtoupper($term_name);
+                $text = "$term result of {$student_attr['name']},\r\n";
+                foreach ($resultDetail as $key => $value) {
+                    $text .= (strtoupper($key) . ": $value\r\n");
+                }
+                echo "$mobile = $text<br/>";
+                $this->sendSMS($mobile, $text);
+            }
+/*            $this->db->where('student_id', $student_id);
+            $this->db->update('student', $data);*/
+        }
+
+        $this->debug($result);
+
         return true;
+    }
+
+    function fetchResultsByClass($className, $classSection) {
+        $return = array();
+        $this->db->select('result.subject sub, result.total_marks total, result.exam exam, student.student_name name, student.student_id stu_id, student.parents_mobile mobile');
+        $this->db->from('result');
+        $this->db->join('student', 'student.student_id = result.student_id', 'left');
+        $this->db->join('class', 'class.class_id = student.class_id', 'left');
+        $this->db->where('class.class', $className);
+        $this->db->where('class.section', $classSection);
+        $this->db->where('result.published', 0);
+        $classes = $this->db->get();
+
+        if ($classes->result()) {
+            foreach ($classes->result() as $key2 => $value) {
+                if (!isset($return[$value->stu_id])) $return[$value->stu_id] = array();
+                if (!isset($return[$value->stu_id]['name'])) $return[$value->stu_id]['name'] = $value->name;
+                if (!isset($return[$value->stu_id]['mobile'])) $return[$value->stu_id]['mobile'] = $value->mobile;
+                if (!isset($return[$value->stu_id]['term'])) $return[$value->stu_id]['term'] = array();
+                if (!isset($return[$value->stu_id]['term'][$value->exam])) $return[$value->stu_id]['term'][$value->exam] = array();
+                $return[$value->stu_id]['term'][$value->exam][$value->sub] = $value->total;
+            }
+        }
+
+        return $return;
     }
 
     function addNewResult()
