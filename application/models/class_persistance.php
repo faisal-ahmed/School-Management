@@ -37,7 +37,7 @@ class Class_persistance  extends model_helper
     function classList(){
         $return = array();
 
-        $this->db->select('class, section, created, COUNT(student.student_id) total_student');
+        $this->db->select('class.class_id class_id, class, section, created, COUNT(student.student_id) total_student');
         $this->db->from('class');
         $this->db->join('student', 'student.class_id = class.class_id', 'left');
         $this->db->group_by("class.class_id");

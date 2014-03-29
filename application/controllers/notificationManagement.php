@@ -15,6 +15,7 @@ class notificationManagement extends controller_helper{
         $this->checkLogin();
         $this->addViewData('username', $this->getSessionAttr('username'));
         $this->addViewData('active_menu', 'notification');
+        $this->load->model('notification_persistance');
     }
 
     function index(){
@@ -22,7 +23,21 @@ class notificationManagement extends controller_helper{
     }
 
     function notifyClass(){
+        $class = $this->uri->segment(3);
+        $section = $this->uri->segment(4);
+        $class_id = $this->uri->segment(5);
+        $this->addViewData('class', array('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'SSC', 'Eleven', 'Twelve', 'HSC'));
+        $this->addViewData('classSelected', $class);
+        $this->addViewData('sectionSelected', $section);
+        $this->addViewData('class_id', $class_id);
         $this->addViewData('tab_menu', 'notifyClass');
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            if ($this->notification_persistance->notifyClass()) {
+                $this->addViewData('success', array('Notification sent!'));
+            } else {
+                $this->addViewData('error', array('An error occurred, please try again!'));
+            }
+        }
         $this->loadview('notify_class');
     }
 

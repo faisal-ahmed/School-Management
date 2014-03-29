@@ -17,7 +17,7 @@
             <td><?php echo $value['section'] ?></td>
             <td><?php echo $value['total_student'] ?></td>
             <td><?php echo date("F j, Y", $value['created']); ?></td>
-            <td class="delete"><a href="#">Send Notification</a></td>
+            <td class="delete"><a href="<?php echo base_url(); ?>index.php/notificationManagement/notifyClass/<?php echo $value['class'] . '/' .$value['section'] . '/' .$value['class_id']  ?>">Send Notification</a></td>
         </tr>
         <?php } } ?>
         </tbody>

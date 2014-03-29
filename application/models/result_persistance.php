@@ -28,8 +28,6 @@ class Result_persistance extends model_helper
             return 'Class or section doesn\' exist!';
         }
 
-        //TODO: Selects all results with that class_id and send sms here
-
         $data = array(
             'published' => 1
         );
@@ -40,18 +38,15 @@ class Result_persistance extends model_helper
             $mobile = $student_attr['mobile'];
             foreach ($student_attr['term'] as $term_name => $resultDetail) {
                 $term = strtoupper($term_name);
-                $text = "$term result of {$student_attr['name']},\r\n";
+                $text = "$term result of {$student_attr['name']}:";
                 foreach ($resultDetail as $key => $value) {
-                    $text .= (strtoupper($key) . ": $value\r\n");
+                    $text .= ("\r\n" . (strtoupper($key) . ": $value"));
                 }
-                echo "$mobile = $text<br/>";
                 $this->sendSMS($mobile, $text);
             }
-/*            $this->db->where('student_id', $student_id);
-            $this->db->update('student', $data);*/
+            $this->db->where('student_id', $student_id);
+            $this->db->update('result', $data);
         }
-
-        $this->debug($result);
 
         return true;
     }
