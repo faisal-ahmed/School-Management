@@ -19,7 +19,7 @@
         <?php } else if ($active_menu == 'result') { ?>
             <ul>
                 <li class="<?php if ($tab_menu == 'addResult') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/resultManagement/addResult">Add Result</a></li>
-                <li class="<?php if ($tab_menu == 'uploadReport') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/resultManagement/uploadReport">Last Uploaded Result's Report</a></li>
+                <!--<li class="<?php /*if ($tab_menu == 'uploadReport') echo 'active'; */?>"><a href="<?php /*echo base_url() */?>index.php/resultManagement/uploadReport">Last Uploaded Result's Report</a></li>-->
                 <li class="<?php if ($tab_menu == 'publishResult') echo 'active'; ?>"><a href="<?php echo base_url() ?>index.php/resultManagement/publishResult">Publish Result (Via SMS)</a></li>
             </ul>
         <?php } /*else if ($active_menu == 'notification') { ?>
