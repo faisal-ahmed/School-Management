@@ -42,7 +42,18 @@ class notificationManagement extends controller_helper{
     }
 
     function notifyStudent(){
+        $student_id = $this->uri->segment(3);
+        $student_name = urldecode($this->uri->segment(4));
+        $this->addViewData('student_id', $student_id);
+        $this->addViewData('student_name', $student_name);
         $this->addViewData('tab_menu', 'notifyStudent');
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            if ($this->notification_persistance->notifyStudent()) {
+                $this->addViewData('success', array('Notification sent!'));
+            } else {
+                $this->addViewData('error', array('An error occurred, please try again!'));
+            }
+        }
         $this->loadview('notify_student');
     }
 }

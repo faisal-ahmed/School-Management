@@ -32,4 +32,20 @@ class Notification_persistance extends model_helper
 
         return true;
     }
+
+    function notifyStudent(){
+        $student_id = $this->getPost('student_id');
+        $message = $this->getPost('message');
+
+        $this->db->select('*');
+        $this->db->from('student');
+        $this->db->where('student_id', $student_id);
+        $students = $this->db->get();
+
+        foreach ($students->result() as $key => $value) {
+            $this->sendSMS($value->parents_mobile, $message);
+        }
+
+        return true;
+    }
 }

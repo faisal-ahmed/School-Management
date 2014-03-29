@@ -46,8 +46,8 @@ class studentManagement extends controller_helper{
 
     function studentList(){
         $this->addViewData('tab_menu', 'studentList');
-        $perPage = 1;
-        $currentPage = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
+        $perPage = 50;
+        $currentPage = ($this->uri->segment(3)) ? ($this->uri->segment(3)) : 1;
         $this->addViewData('students', $this->student_persistance->studentList($perPage, $currentPage));
         $this->addViewData('pagination', $this->loadPagination('studentManagement/studentList', $this->student_persistance->totalStudentCount(), $perPage));
         $this->loadview('student_list');

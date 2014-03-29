@@ -23,7 +23,7 @@
                 <td><?php echo $value['students_mobile'] ?></td>
                 <td><?php echo $value['parents_mobile'] ?></td>
                 <td><?php echo date("F j, Y", $value['student_created']); ?></td>
-                <td class="delete"><a href="#">Send Notification</a></td>
+                <td class="delete"><a href="<?php echo base_url() ?>index.php/notificationManagement/notifyStudent/<?php echo $value['student_id'] . "/" . $value['student_name'] ?>">Send Notification</a></td>
             </tr>
         <?php } } ?>
         </tbody>

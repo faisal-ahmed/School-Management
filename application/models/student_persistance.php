@@ -28,8 +28,10 @@ class Student_persistance  extends model_helper
             'student_created' => time(),
             'class_id' => '',
         );
+        $this->db->select('*');
+        $this->db->from('student');
         $this->db->where('student_roll', $data['student_roll']);
-        if ($this->db->count_all_results('student')) {
+        if ($this->db->count_all_results() > 0) {
             return 'A student already exist with that roll number!';
         }
 

@@ -3,7 +3,7 @@
     <?php echo form_open_multipart('studentManagement/addStudent'); ?>
 
     <p>
-        <label>Studnet Name:</label> <br/>
+        <label>Student Name:</label> <br/>
         <input type="text" value="<?php echo set_value('student_name'); ?>" name="student_name" class="text"/>
     </p>
 
